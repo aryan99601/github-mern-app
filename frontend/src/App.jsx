@@ -25,7 +25,7 @@ function App() {
         <Route path="/likes" element={authUser ?<LikesPage/>: <Navigate to={"/login"}/>}/>
       </Routes>
       <Toaster/>
-      <footer>Footer</footer>
+      
     </div>
     </div>
   );
