@@ -14,7 +14,7 @@ const ExplorePage = () => {
     try{
 
       //5000 requests per hour using token authentication
-       const res = await fetch("http://localhost:5000/api/explore/repos/" + language);
+       const res = await fetch("/api/explore/repos/" + language);
        const {repos} = await res.json();
        setRepos(repos);
        setSelectedLanguage(language);

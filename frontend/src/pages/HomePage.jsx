@@ -15,7 +15,7 @@ const HomePage = () => {
     async(username="aryan99601")=>{
       setLoading(true);
       try{
-       const res =await fetch(`http://localhost:5000/api/users/profile/${username}`)
+       const res =await fetch(`/api/users/profile/${username}`)
       const {repos,userProfile} = await res.json();
       repos.sort((a,b)=> new Date(b.created_at)- new Date(a.created_at));  //descending ->recent first
       setRepos(repos);
@@ -47,6 +47,7 @@ const HomePage = () => {
   };
 
   const onSort =(sortType)=>{
+    let sortedRepos = [...repos];
  if(sortType==="recent"){
   repos.sort((a,b)=> new Date(b.created_at)- new Date(a.created_at));  //descending ->recent first
  } else if (sortType === "stars"){
@@ -55,7 +56,7 @@ const HomePage = () => {
   repos.sort((a,b)=>b.forks_count - a.forks_count); //descending most forks first
  }
  setSortType(sortType);
- setRepos([...repos]);
+ setRepos(sortedRepos);
 }
   return (
   <div className='m-4'>
